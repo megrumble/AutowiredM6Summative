@@ -1,5 +1,7 @@
 package com.autowired.dao;
 
+import com.autowired.model.Invoice;
+
 import java.util.List;
 
 public interface InvoiceDao {
@@ -22,6 +24,13 @@ public interface InvoiceDao {
      * @return List<Invoice>
      */
     List<Invoice> getAllInvoices();
+
+    /**
+     * Retrieves a list of all Invoices By Customer in the database
+     * @param customerId
+     * @return List<Invoice>
+     */
+    List<Invoice> getInvoicesByCustomer(int customerId);
 
     /**
      * Updates an Invoice from the Invoice object sent from the RestController
