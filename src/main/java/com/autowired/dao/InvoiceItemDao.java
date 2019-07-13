@@ -1,5 +1,7 @@
 package com.autowired.dao;
 
+import com.autowired.model.InvoiceItem;
+
 import java.util.List;
 
 public interface InvoiceItemDao {
@@ -12,7 +14,7 @@ public interface InvoiceItemDao {
 
     /**
      * Retrieves a InvoiceItem object from the database using a given InvoiceItem id
-     * @param InvoiceItemId
+     * @param invoiceItemId
      * @return InvoiceItem - The InvoiceItem object is returned to the RestController
      */
     InvoiceItem getInvoiceItem(int invoiceItemId);

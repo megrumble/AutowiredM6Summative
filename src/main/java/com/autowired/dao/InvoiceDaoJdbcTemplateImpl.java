@@ -39,6 +39,7 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
      * @return Invoice - The Invoice object is returned to the RestController
      */
     @Override
+    @Transactional
     public Invoice addInvoice(Invoice invoice) {
         jdbcTemplate.update(ADD_INVOICE_SQL,
                 invoice.getCustomerId(),
@@ -96,6 +97,7 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
      * @param invoice - The Invoice object sent from the RestController
      */
     @Override
+    @Transactional
     public void updateInvoice(Invoice invoice) {
         jdbcTemplate.update(UPDATE_INVOICE_SQL,
                 invoice.getCustomerId(),
@@ -112,6 +114,7 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
      * @param invoiceId
      */
     @Override
+    @Transactional
     public void deleteInvoice(int invoiceId) {
         jdbcTemplate.update(DELETE_INVOICE, invoiceId);
     }

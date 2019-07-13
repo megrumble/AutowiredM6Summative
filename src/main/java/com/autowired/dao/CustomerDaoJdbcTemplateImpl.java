@@ -1,6 +1,7 @@
 package com.autowired.dao;
 
 import com.autowired.model.Customer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,7 +25,7 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
             "select * from customers";
     private static final String UPDATE_CUSTOMER_SQL =
             "update customer set first_name = ?, last_name = ?, email = ?, company, phone = ? where customer_id = ?";
-    private static final String DELET_CUSTOMER_SQL =
+    private static final String DELETE_CUSTOMER_SQL =
             "delete from customer where customer_id = ?";
 
     @Autowired
@@ -104,7 +105,7 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
     @Override
     @Transactional
     public void deleteCustomer(int customerId) {
-        jdbcTemplate.update(DELET_CUSTOMER_SQL, customerId);
+        jdbcTemplate.update(DELETE_CUSTOMER_SQL, customerId);
     }
 
     private Customer mapRowToCustomer(ResultSet rs, int rowNum) throws SQLException {
