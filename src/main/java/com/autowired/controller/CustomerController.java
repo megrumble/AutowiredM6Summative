@@ -16,15 +16,15 @@ public class CustomerController {
     private CustomerDaoJdbcTemplateImpl customerDaoJdbcTemplate;
 
     @RequestMapping(value = "/customer", method = RequestMethod.POST)
-    @ResponseStatus(value = HttpStatus.CREATED)
-    public Customer addCustomer(@RequestBody @Valid Customer customer){
-        return customer;
-    }
-    @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.PUT)
-    @ResponseStatus(value = HttpStatus.OK)
-    public Customer updateCustomer(@PathVariable int customerId, @RequestBody @Valid Customer customer) {
-        customer.setCustomerId(customerId);
 
+        @ResponseStatus(value = HttpStatus.CREATED)
+        public Customer addCustomer(@RequestBody @Valid Customer customer){
+            return customer;
+        }
+        @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.PUT)
+        @ResponseStatus(value = HttpStatus.OK)
+        public Customer updateCustomer(@PathVariable int customerId, @RequestBody @Valid Customer customer) {
+            customer.setCustomerId(customerId);
         return customer;
     }
     @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.GET)
