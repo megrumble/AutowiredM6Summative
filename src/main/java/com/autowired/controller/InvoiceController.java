@@ -16,31 +16,33 @@ public class InvoiceController {
     private InvoiceDaoJdbcTemplateImpl invoiceDaoJdbcTemplate;
 
     @RequestMapping(value = "/invoice", method = RequestMethod.POST)
-
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Invoice addInvoice(@RequestBody @Valid Invoice invoice){
-        return invoice;
+    public Invoice addInvoice(@RequestBody @Valid Invoice invoice) {
+        return invoiceDaoJdbcTemplate.addInvoice(invoice);
     }
+
     @RequestMapping(value = "/invoice/{invoiceId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.OK)
-    public Invoice updateInvoice(@PathVariable int invoiceId, @RequestBody @Valid Invoice invoice){
+    public void updateInvoice(@PathVariable int invoiceId, @RequestBody @Valid Invoice invoice) {
         invoice.setInvoiceId(invoiceId);
-        return invoice;
+        invoiceDaoJdbcTemplate.updateInvoice(invoice);
     }
+
     @RequestMapping(value = "/invoice/{invoiceId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Invoice getInvoice(@PathVariable int invoiceId){
-        Invoice invoice = new Invoice();
-        invoice.setInvoiceId(invoiceId);
-        return invoice;
+    public Invoice getInvoice(@PathVariable int invoiceId) {
+        return invoiceDaoJdbcTemplate.getInvoice(invoiceId);
     }
 
     @RequestMapping(value = "/invoice/{invoiceId}", method = RequestMethod.DELETE)
-    public void deleteInvoice(@PathVariable int invoiceId){
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deleteInvoice(@PathVariable int invoiceId) {
         invoiceDaoJdbcTemplate.deleteInvoice(invoiceId);
     }
+
     @RequestMapping(value = "/invoice", method = RequestMethod.GET)
-    public List<Invoice> getAllInvoices(){
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<Invoice> getAllInvoices() {
         return invoiceDaoJdbcTemplate.getAllInvoices();
     }
 }

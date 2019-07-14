@@ -17,30 +17,31 @@ public class ItemController {
     private ItemDaoJdbcTemplateImpl itemDaoJdbcTemplate;
 
     @RequestMapping(value = "/item", method = RequestMethod.POST)
-
     @ResponseStatus(value = HttpStatus.CREATED)
     public Item addItem(@RequestBody @Valid Item item){
-        return item;
+        return itemDaoJdbcTemplate.addItem(item);
     }
+
     @RequestMapping(value = "/item/{itemId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.OK)
-    public Item updateItem(@PathVariable int itemId, @RequestBody @Valid Item item){
+    public void updateItem(@PathVariable int itemId, @RequestBody @Valid Item item) {
         item.setItemId(itemId);
-        return item;
+        itemDaoJdbcTemplate.updateItem(item);
     }
     @RequestMapping(value = "/item/{itemId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Item getItem(@PathVariable int itemId){
-        Item item = new Item();
-        item.setItemId(itemId);
-        return item;
+    public Item getItem(@PathVariable int itemId) {
+        return itemDaoJdbcTemplate.getItem(itemId);
     }
 
     @RequestMapping(value = "/item/{itemId}", method = RequestMethod.DELETE)
-    public void deleteItem(@PathVariable int itemId){
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deleteItem(@PathVariable int itemId) {
         itemDaoJdbcTemplate.deleteItem(itemId);
     }
+
     @RequestMapping(value = "/item", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
     public List<Item> getAllItems(){
         return itemDaoJdbcTemplate.getAllItems();
     }
