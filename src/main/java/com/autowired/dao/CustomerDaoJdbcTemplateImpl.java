@@ -35,7 +35,6 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
 
     /**
      * Add a customer object to the database.
-     *
      * @param customer - The customer object sent from the RestController
      * @return customer - The customer object is returned to the RestController
      */
@@ -57,7 +56,6 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
 
     /**
      * Retrieves a customer object from the database using a given customer id
-     *
      * @param customerId
      * @return customer - The customer object is returned to the RestController
      */
@@ -73,7 +71,6 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
 
     /**
      * Retrieves a list of all customers in the database
-     *
      * @return List<Customer>
      */
     @Override
@@ -83,7 +80,6 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
 
     /**
      * Updates a customer from the customer object sent from the RestController
-     *
      * @param customer - The customer object sent from the RestController
      */
     @Override
@@ -99,7 +95,6 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
 
     /**
      * Deletes a customer from the database using a customerID from the RestController
-     *
      * @param customerId
      */
     @Override

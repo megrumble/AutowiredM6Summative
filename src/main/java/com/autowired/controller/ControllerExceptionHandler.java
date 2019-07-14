@@ -20,10 +20,9 @@ import java.util.List;
 
 public class ControllerExceptionHandler {
 
-
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public ResponseEntity<VndErrors> motorcycleValidationError(MethodArgumentNotValidException e, WebRequest request){
+    public ResponseEntity<VndErrors> rentalStoreValidationError(MethodArgumentNotValidException e, WebRequest request){
         //BindingResult holds the validation errors
         BindingResult result = e.getBindingResult();
 
@@ -46,6 +45,7 @@ public class ControllerExceptionHandler {
 
         return responseEntity;
     }
+
     @ExceptionHandler(value = {IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ResponseEntity<VndErrors> invalidInputError(IllegalArgumentException e, WebRequest request){
@@ -54,6 +54,7 @@ public class ControllerExceptionHandler {
         ResponseEntity<VndErrors> responseEntity = new ResponseEntity<>(vndError, HttpStatus.UNPROCESSABLE_ENTITY);
         return responseEntity;
     }
+
     @ExceptionHandler(value = {NumberFormatException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ResponseEntity<VndErrors> numberNotFound(NumberFormatException e, WebRequest request){
