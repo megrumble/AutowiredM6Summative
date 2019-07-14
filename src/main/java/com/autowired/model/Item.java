@@ -1,5 +1,7 @@
 package com.autowired.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -10,8 +12,13 @@ public class Item {
 //    description varchar(255),
 //    dailyRate decimal(8.2) not null
     private int itemId;
+
+    @NotEmpty(message = "You must supply a value for name.")
     private String name;
+
+    @NotEmpty(message = "You must supply a value for description.")
     private String description;
+
     private BigDecimal dailyRate;
 
     public int getItemId() {
