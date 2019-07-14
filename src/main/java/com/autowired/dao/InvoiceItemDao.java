@@ -27,13 +27,13 @@ public interface InvoiceItemDao {
 
     /**
      * Updates an InvoiceItem from the InvoiceItem object sent from the RestController
-     * @param InvoiceItem - The InvoiceItem object sent from the RestController
+     * @param invoiceItem - The InvoiceItem object sent from the RestController
      */
     void updateInvoiceItem(InvoiceItem invoiceItem);
 
     /**
      * Deletes a InvoiceItem from the database using a InvoiceItemID from the RestController
-     * @param InvoiceItemId
+     * @param invoiceItemId
      */
     void deleteInvoiceItem(int invoiceItemId);
 }
