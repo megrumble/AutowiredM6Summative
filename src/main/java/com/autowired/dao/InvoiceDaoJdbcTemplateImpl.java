@@ -1,10 +1,13 @@
 package com.autowired.dao;
 
 import com.autowired.model.Invoice;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,13 +21,13 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
             "insert into invoice (customer_id, order_date, pickup_date, return_date, late_fee) values (?, ?, ?, ?, ?)";
     private static final String SELECT_INVOICE_SQL =
             "select * from invoice where invoice_id = ?";
-    private static final String SELECT_ALL_INVOICES =
+    private static final String SELECT_ALL_INVOICES_SQL =
             "select * from invoice";
-    private static final String SELECT_INVOICES_BY_CUSTOMER =
+    private static final String SELECT_INVOICES_BY_CUSTOMER_SQL =
             "select * from invoice where customer_id = ?";
     private static final String UPDATE_INVOICE_SQL =
             "update invoice set customer_id = ?, order_date = ?, pickup_date = ?, return_date = ?, late_fee = ? where invoice_id = ?";
-    private static final String DELETE_INVOICE =
+    private static final String DELETE_INVOICE_SQL =
             "delete from invoice where invoice_id = ?";
 
     @Autowired
@@ -34,7 +37,6 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
 
     /**
      * Add an Invoice object to the database.
-     *
      * @param invoice - The Invoice object sent from the RestController
      * @return Invoice - The Invoice object is returned to the RestController
      */
@@ -56,7 +58,6 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
 
     /**
      * Retrieves an Invoice object from the database using a given Invoice id
-     *
      * @param invoiceId
      * @return Invoice - The Invoice object is returned to the RestController
      */
@@ -72,28 +73,25 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
 
     /**
      * Retrieves a list of all Invoices in the database
-     *
      * @return List<Invoice>
      */
     @Override
     public List<Invoice> getAllInvoices() {
-        return jdbcTemplate.query(SELECT_ALL_INVOICES, this::mapRowToInvoice);
+        return jdbcTemplate.query(SELECT_ALL_INVOICES_SQL, this::mapRowToInvoice);
     }
 
     /**
      * Retrieves a list of all Invoices By Customer in the database
-     *
      * @param customerId
      * @return List<Invoice>
      */
     @Override
     public List<Invoice> getInvoicesByCustomer(int customerId) {
-        return jdbcTemplate.query(SELECT_INVOICES_BY_CUSTOMER, this::mapRowToInvoice, customerId);
+        return jdbcTemplate.query(SELECT_INVOICES_BY_CUSTOMER_SQL, this::mapRowToInvoice, customerId);
     }
 
     /**
      * Updates an Invoice from the Invoice object sent from the RestController
-     *
      * @param invoice - The Invoice object sent from the RestController
      */
     @Override
@@ -110,13 +108,12 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
 
     /**
      * Deletes a Invoice from the database using a InvoiceID from the RestController
-     *
      * @param invoiceId
      */
     @Override
     @Transactional
     public void deleteInvoice(int invoiceId) {
-        jdbcTemplate.update(DELETE_INVOICE, invoiceId);
+        jdbcTemplate.update(DELETE_INVOICE_SQL, invoiceId);
     }
 
     private Invoice mapRowToInvoice(ResultSet rs, int rowNum) throws SQLException {
