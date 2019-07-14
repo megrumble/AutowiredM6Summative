@@ -17,29 +17,30 @@ public class InvoiceItemController {
     private InvoiceItemDaoJdbcTemplateImpl invoiceItemDaoJdbcTemplate;
 
     @RequestMapping(value = "/invoiceItem", method = RequestMethod.POST)
-
     @ResponseStatus(value = HttpStatus.CREATED)
     public InvoiceItem addInvoiceItem(@RequestBody @Valid InvoiceItem invoiceItem){
-        return invoiceItem;
+        return invoiceItemDaoJdbcTemplate.addInvoiceItem(invoiceItem);
     }
+
     @RequestMapping(value = "/invoiceItem/{invoiceItemId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.OK)
-    public InvoiceItem updateInvoiceItem(@PathVariable int invoiceItemId, @RequestBody @Valid InvoiceItem invoiceItem){
+    public void updateInvoiceItem(@PathVariable int invoiceItemId, @RequestBody @Valid InvoiceItem invoiceItem){
         invoiceItem.setInvoiceItemId(invoiceItemId);
-        return invoiceItem;
+        invoiceItemDaoJdbcTemplate.updateInvoiceItem(invoiceItem);
     }
+
     @RequestMapping(value = "/invoiceItem/{invoiceItemId}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public InvoiceItem getInvoiceItem(@PathVariable int invoiceItemId){
-        InvoiceItem invoiceItem = new InvoiceItem();
-        invoiceItem.setInvoiceItemId(invoiceItemId);
-        return invoiceItem;
+        return invoiceItemDaoJdbcTemplate.getInvoiceItem(invoiceItemId);
     }
 
     @RequestMapping(value = "/invoiceItem/{invoiceItemId}", method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.OK)
     public void deleteInvoiceItem(@PathVariable int invoiceItemId){
         invoiceItemDaoJdbcTemplate.deleteInvoiceItem(invoiceItemId);
     }
+
     @RequestMapping(value = "/invoiceItem", method = RequestMethod.GET)
     public List<InvoiceItem> getAllInvoiceItems(){
         return invoiceItemDaoJdbcTemplate.getAllInvoiceItems();
