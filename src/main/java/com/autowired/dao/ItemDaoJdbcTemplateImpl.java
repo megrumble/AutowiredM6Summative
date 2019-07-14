@@ -1,5 +1,6 @@
 package com.autowired.dao;
 
+import com.autowired.model.Item;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 

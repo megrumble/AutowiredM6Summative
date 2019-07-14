@@ -17,7 +17,7 @@ public class Customer {
     private int customerId;
 
     @NotNull(message = "First name is required")
-    private String fistName;
+    private String firstName;
 
     @NotNull(message = "Last name is required")
     private String lastName;
@@ -40,12 +40,12 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -86,7 +86,7 @@ public class Customer {
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
         return getCustomerId() == customer.getCustomerId() &&
-                getFistName().equals(customer.getFistName()) &&
+                getFirstName().equals(customer.getFirstName()) &&
                 getLastName().equals(customer.getLastName()) &&
                 getEmail().equals(customer.getEmail()) &&
                 getCompany().equals(customer.getCompany()) &&
@@ -95,7 +95,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCustomerId(), getFistName(), getLastName(), getEmail(), getCompany(), getPhone());
+        return Objects.hash(getCustomerId(), getFirstName(), getLastName(), getEmail(), getCompany(), getPhone());
     }
 
 }
