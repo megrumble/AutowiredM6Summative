@@ -1,5 +1,6 @@
 package com.autowired.viewmodel;
 
+import com.autowired.model.Customer;
 import com.autowired.model.Invoice;
 import com.autowired.model.Item;
 
@@ -12,6 +13,7 @@ public class InvoiceViewModel {
 
     private int invoiceItemId;
     private int customerId;
+    private Customer customer;
     private int quantity;
     private Invoice invoice;
     private BigDecimal unitRate;

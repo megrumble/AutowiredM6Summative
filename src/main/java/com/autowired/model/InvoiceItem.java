@@ -82,6 +82,4 @@ public class InvoiceItem {
     public int hashCode() {
         return Objects.hash(getInvoiceItemId(), getInvoiceId(), getItemId(), getQuantity(), getUnitRate(), getDiscount());
     }
-
-
 }
