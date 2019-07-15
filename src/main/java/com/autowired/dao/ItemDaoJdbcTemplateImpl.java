@@ -17,11 +17,11 @@ public class ItemDaoJdbcTemplateImpl implements ItemDao {
     private static final String ADD_ITEM_SQL =
                 "insert into item (name, description, daily_rate) values (?, ?, ?)";
     private static final String SELECT_ITEM_SQL =
-                "select * from item here item_id = ?";
+                "select * from item where item_id = ?";
     private static final String SELECT_ALL_ITEMS_SQL =
                 "select * from item";
     private static final String UPDATE_ITEM_SQL =
-                "update item name = ?, description = ?, daily_rate = ? where item_id = ?";
+                "update item set name = ?, description = ?, daily_rate = ? where item_id = ?";
     private static final String DELETE_SQL =
                 "delete from item where item_id = ?";
 
