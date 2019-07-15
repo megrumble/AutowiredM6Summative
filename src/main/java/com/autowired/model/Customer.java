@@ -1,5 +1,9 @@
 package com.autowired.model;
 
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class Customer {
@@ -11,11 +15,22 @@ public class Customer {
 //    phone varchar(50) not null
 
     private int customerId;
-    private String fistName;
+
+    @NotNull(message = "First name is required")
+    private String firstName;
+
+    @NotNull(message = "Last name is required")
     private String lastName;
+
+    @Email(message = "Email should be valid")
     private String email;
+
+    @NotNull(message = "You must supply a value for company.")
     private String company;
+
+    @Size(min = 10, max = 10, message = "Phone must be 10 digits.")
     private String phone;
+
 
     public int getCustomerId() {
         return customerId;
@@ -25,12 +40,12 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -71,7 +86,7 @@ public class Customer {
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
         return getCustomerId() == customer.getCustomerId() &&
-                getFistName().equals(customer.getFistName()) &&
+                getFirstName().equals(customer.getFirstName()) &&
                 getLastName().equals(customer.getLastName()) &&
                 getEmail().equals(customer.getEmail()) &&
                 getCompany().equals(customer.getCompany()) &&
@@ -80,7 +95,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCustomerId(), getFistName(), getLastName(), getEmail(), getCompany(), getPhone());
+        return Objects.hash(getCustomerId(), getFirstName(), getLastName(), getEmail(), getCompany(), getPhone());
     }
 
 }

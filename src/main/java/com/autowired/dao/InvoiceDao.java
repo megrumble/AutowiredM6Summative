@@ -26,6 +26,13 @@ public interface InvoiceDao {
     List<Invoice> getAllInvoices();
 
     /**
+     * Retrieves a list of all Invoices By Customer in the database
+     * @param customerId
+     * @return List<Invoice>
+     */
+    List<Invoice> getInvoicesByCustomer(int customerId);
+
+    /**
      * Updates an Invoice from the Invoice object sent from the RestController
      * @param invoice - The Invoice object sent from the RestController
      */
