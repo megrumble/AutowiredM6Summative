@@ -33,10 +33,13 @@ public class CustomerTest {
         //clean up db
         List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItems();
         invoiceItemList.stream().forEach(invoiceItem -> invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId()));
-        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
-        invoiceList.stream().forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
+
         List<Item> itemList = itemDao.getAllItems();
         itemList.stream().forEach(item -> itemDao.deleteItem(item.getItemId()));
+
+        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
+        invoiceList.stream().forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
+
         List<Customer> customerList = customerDao.getAllCustomers();
         customerList.stream().forEach(customer -> customerDao.deleteCustomer(customer.getCustomerId()));
 
