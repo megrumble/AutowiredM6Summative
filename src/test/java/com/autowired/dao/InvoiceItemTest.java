@@ -77,7 +77,6 @@ public class InvoiceItemTest {
 
         item = itemDao.addItem(item);
 
-
         InvoiceItem invoiceItem = new InvoiceItem();
         invoiceItem.setInvoiceId(invoice.getInvoiceId());
         invoiceItem.setItemId(item.getItemId());
