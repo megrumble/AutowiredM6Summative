@@ -41,7 +41,6 @@ public class InvoiceItemTest {
         List<Item> itemList = itemDao.getAllItems();
         itemList.stream().forEach(item -> itemDao.deleteItem(item.getItemId()));
 
-
         List<Invoice> invoiceList = invoiceDao.getAllInvoices();
         invoiceList.stream().forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
 
@@ -75,7 +74,9 @@ public class InvoiceItemTest {
         item.setName("Yesterday");
         item.setDescription("dvd");
         item. setDailyRate(new BigDecimal("2.50"));
-        item =itemDao.addItem(item);
+
+        item = itemDao.addItem(item);
+
 
         InvoiceItem invoiceItem = new InvoiceItem();
         invoiceItem.setInvoiceId(invoice.getInvoiceId());
