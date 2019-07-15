@@ -94,7 +94,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void getAllAuthors(){
+    public void getAllCustomers(){
         Customer customer = new Customer();
         customer.setFirstName("George");
         customer.setLastName("Harrison");
