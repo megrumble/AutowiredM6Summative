@@ -163,5 +163,52 @@ public class InvoiceTest {
         assertEquals(2, invoiceList.size());
     }
 
-//    @Test
+    @Test
+    public void getInvoiceByCustomer(){
+        Customer customer = new Customer();
+        customer.setFirstName("George");
+        customer.setLastName("Harrison");
+        customer.setPhone("1234567890");
+        customer.setEmail("geo@gmail.com");
+        customer.setCompany("Beatles");
+
+        customerDao.addCustomer(customer);
+
+        Customer customer1 = new Customer();
+        customer1.setFirstName("Ringo");
+        customer1.setLastName("Star");
+        customer1.setPhone("1234567890");
+        customer1.setEmail("geo@gmail.com");
+        customer1.setCompany("Beatles");
+
+        customerDao.addCustomer(customer1);
+
+//        Customer customer1 = customerDao.getCustomer(customer.getCustomerId());
+
+//        assertEquals(customer1, customer);
+
+        Invoice invoice = new Invoice();
+        invoice.setCustomerId(customer.getCustomerId());
+        invoice.setLateFee(BigDecimal.valueOf(3.09));
+        invoice.setOrderDate(LocalDate.now());
+        invoice.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
+        invoice.setReturnDate(LocalDate.now().plus(10,ChronoUnit.DAYS));
+
+        invoiceDao.addInvoice(invoice);
+
+        Invoice invoice1 = new Invoice();
+        invoice1.setCustomerId(customer1.getCustomerId());
+        invoice1.setLateFee(BigDecimal.valueOf(3.09));
+        invoice1.setOrderDate(LocalDate.now());
+        invoice1.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
+        invoice1.setReturnDate(LocalDate.now().plus(10,ChronoUnit.DAYS));
+
+        invoiceDao.addInvoice(invoice1);
+
+        List<Invoice> invoiceList = invoiceDao.getInvoicesByCustomer(customer1.getCustomerId());
+
+
+        assertEquals(invoice1, invoiceList.get(0));
+
+    }
 }
