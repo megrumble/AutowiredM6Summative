@@ -1,5 +1,7 @@
 package com.autowired.dao;
 
+import com.autowired.model.Invoice;
+
 import java.util.List;
 
 public interface InvoiceDao {

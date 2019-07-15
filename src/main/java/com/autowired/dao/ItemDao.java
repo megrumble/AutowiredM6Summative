@@ -1,5 +1,7 @@
 package com.autowired.dao;
 
+import com.autowired.model.Item;
+
 import java.util.List;
 
 public interface ItemDao {
