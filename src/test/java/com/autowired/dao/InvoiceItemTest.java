@@ -6,7 +6,10 @@ import com.autowired.model.InvoiceItem;
 import com.autowired.model.Item;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,6 +18,8 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 public class InvoiceItemTest {
 
     @Autowired
@@ -29,12 +34,17 @@ public class InvoiceItemTest {
     @Before
     public void setUp() throws Exception {
         //clean up db
+
         List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItems();
         invoiceItemList.stream().forEach(invoiceItem -> invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId()));
-        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
-        invoiceList.stream().forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
+
         List<Item> itemList = itemDao.getAllItems();
         itemList.stream().forEach(item -> itemDao.deleteItem(item.getItemId()));
+
+
+        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
+        invoiceList.stream().forEach(invoice -> invoiceDao.deleteInvoice(invoice.getInvoiceId()));
+
         List<Customer> customerList = customerDao.getAllCustomers();
         customerList.stream().forEach(customer -> customerDao.deleteCustomer(customer.getCustomerId()));
 

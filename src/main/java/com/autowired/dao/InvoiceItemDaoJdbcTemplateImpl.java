@@ -2,6 +2,7 @@ package com.autowired.dao;
 
 import com.autowired.model.InvoiceItem;
 
+import com.autowired.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 
@@ -27,12 +28,15 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     private BigDecimal unitRate;
     private BigDecimal discount;
     private JdbcTemplate jdbcTemplate;
+<<<<<<< HEAD
     private static final String INSERT_INVOICEITEM_SQL =
             "insert into invoice_item (invoiceItemId, invoiceId, itemId, quantity, unitRate, discount) values(?, ?, ?, ?, ?, ?)";
     private static final String SELECT_INVOICEITEM_SQL =
             "select ";
 
 //    JdbcTemplate jdbcTemplate;
+=======
+>>>>>>> ce9b7654559ed9c4d8f8772ec3a8f18e191442a9
 
     private static final String ADD_INVOICE_ITEM_SQL =
             "insert into invoice_item (invoice_id, item_id, quantity, unit_rate, discount) values (?, ?, ?, ?, ?)";
@@ -44,10 +48,16 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
             "update invoice_item set invoice_id = ?, item_id = ?, quantity = ?, unit_rate = ?, discount = ? where invoice_item_id = ?";
     private static final String DELETE_INVOICE_ITEM_SQL =
             "delete from invoice_item where invoice_item_id = ?";
+    private InvoiceDao invoiceDao;
+
+    private ItemDao itemDao;
+
 
     @Autowired
-    public InvoiceItemDaoJdbcTemplateImpl(JdbcTemplate jdbcTemplate) {
+    public InvoiceItemDaoJdbcTemplateImpl(JdbcTemplate jdbcTemplate, InvoiceDao invoiceDao, ItemDao itemDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.invoiceDao = invoiceDao;
+        this.itemDao = itemDao;
     }
 
 
