@@ -1,18 +1,37 @@
 package com.autowired.dao;
 
 import com.autowired.model.InvoiceItem;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.math.BigDecimal;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.List;
 
 @Repository
 public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
+
+    private int invoiceItemId;
+    private int invoiceId;
+    private int itemId;
+    private int quantity;
+    private BigDecimal unitRate;
+    private BigDecimal discount;
+    private JdbcTemplate jdbcTemplate;
+    private static final String INSERT_INVOICEITEM_SQL =
+            "insert into invoice_item (invoiceItemId, invoiceId, itemId, quantity, unitRate, discount) values(?, ?, ?, ?, ?, ?)";
+    private static final String SELECT_INVOICEITEM_SQL =
+            "select "
+=======
     JdbcTemplate jdbcTemplate;
 
     private static final String ADD_INVOICE_ITEM_SQL =
@@ -30,6 +49,7 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     public InvoiceItemDaoJdbcTemplateImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
 
     /**
      * Add a InvoiceItem object to the database.
