@@ -1,45 +1,26 @@
 package com.autowired.viewmodel;
 
+import com.autowired.model.Customer;
 import com.autowired.model.Invoice;
+import com.autowired.model.InvoiceItem;
 import com.autowired.model.Item;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class InvoiceViewModel {
-
-    private int invoiceItemId;
-    private int customerId;
-    private int quantity;
+    private Customer customer;
     private Invoice invoice;
-    private BigDecimal unitRate;
-    private BigDecimal discount;
-    private List<Item> item = new ArrayList<>();
+    private List<InvoiceItem> invoiceItemList = new ArrayList<>();
 
-    public int getInvoiceItemId() {
-        return invoiceItemId;
+
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setInvoiceItemId(int invoiceItemId) {
-        this.invoiceItemId = invoiceItemId;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Invoice getInvoice() {
@@ -50,28 +31,12 @@ public class InvoiceViewModel {
         this.invoice = invoice;
     }
 
-    public BigDecimal getUnitRate() {
-        return unitRate;
+    public List<InvoiceItem> getInvoiceItemList() {
+        return invoiceItemList;
     }
 
-    public void setUnitRate(BigDecimal unitRate) {
-        this.unitRate = unitRate;
-    }
-
-    public BigDecimal getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(BigDecimal discount) {
-        this.discount = discount;
-    }
-
-    public List<Item> getItem() {
-        return item;
-    }
-
-    public void setItem(List<Item> item) {
-        this.item = item;
+    public void setInvoiceItemList(List<InvoiceItem> invoiceItemList) {
+        this.invoiceItemList = invoiceItemList;
     }
 
     @Override
@@ -79,17 +44,13 @@ public class InvoiceViewModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceViewModel that = (InvoiceViewModel) o;
-        return getInvoiceItemId() == that.getInvoiceItemId() &&
-                getCustomerId() == that.getCustomerId() &&
-                getQuantity() == that.getQuantity() &&
+        return getCustomer().equals(that.getCustomer()) &&
                 getInvoice().equals(that.getInvoice()) &&
-                getUnitRate().equals(that.getUnitRate()) &&
-                getDiscount().equals(that.getDiscount()) &&
-                getItem().equals(that.getItem());
+                getInvoiceItemList().equals(that.getInvoiceItemList());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getInvoiceItemId(), getCustomerId(), getQuantity(), getInvoice(), getUnitRate(), getDiscount(), getItem());
+        return Objects.hash(getCustomer(), getInvoice(), getInvoiceItemList());
     }
 }
