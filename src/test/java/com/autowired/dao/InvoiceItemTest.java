@@ -74,11 +74,8 @@ public class InvoiceItemTest {
         item.setName("Yesterday");
         item.setDescription("dvd");
         item. setDailyRate(new BigDecimal("2.50"));
-<<<<<<< HEAD
-        item =itemDao.addItem(item);
-=======
+
         item = itemDao.addItem(item);
->>>>>>> 4d440656f7d389efb16cd5516e2feced88b69cc1
 
         InvoiceItem invoiceItem = new InvoiceItem();
         invoiceItem.setInvoiceId(invoice.getInvoiceId());
