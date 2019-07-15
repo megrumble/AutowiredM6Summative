@@ -114,7 +114,7 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
         customer.setEmail(rs.getString("email"));
         customer.setCompany(rs.getString("company"));
         customer.setPhone(rs.getString("phone"));
-
+//new comment
          return customer;
     }
 }
