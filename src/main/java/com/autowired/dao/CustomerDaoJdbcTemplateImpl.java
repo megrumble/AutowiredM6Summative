@@ -24,7 +24,7 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao {
     private static final String SELECT_CUSTOMER_SQL =
             "select * from customer where customer_id = ?";
     private static final String SELECT_ALL_CUSTOMERS_SQL =
-            "select * from customers";
+            "select * from customer";
     private static final String UPDATE_CUSTOMER_SQL =
             "update customer set first_name = ?, last_name = ?, email = ?, company, phone = ? where customer_id = ?";
     private static final String DELETE_CUSTOMER_SQL =

@@ -30,9 +30,9 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     private static final String INSERT_INVOICEITEM_SQL =
             "insert into invoice_item (invoiceItemId, invoiceId, itemId, quantity, unitRate, discount) values(?, ?, ?, ?, ?, ?)";
     private static final String SELECT_INVOICEITEM_SQL =
-            "select "
-=======
-    JdbcTemplate jdbcTemplate;
+            "select ";
+
+//    JdbcTemplate jdbcTemplate;
 
     private static final String ADD_INVOICE_ITEM_SQL =
             "insert into invoice_item (invoice_id, item_id, quantity, unit_rate, discount) values (?, ?, ?, ?, ?)";
