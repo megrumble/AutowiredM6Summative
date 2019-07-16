@@ -23,7 +23,7 @@ public class ServiceLayerTest {
     ServiceLayer service;
     CustomerDao customerDao;
     InvoiceDao invoiceDao;
-    CustomerDao itemDao;
+    ItemDao itemDao;
     InvoiceItemDao invoiceItemDao;
 
     @Before
@@ -33,7 +33,7 @@ public class ServiceLayerTest {
         setUpItemDaoMock();
         setUpInvoiceItemDaoMock();
 
-        service = new ServiceLayer(customerDao, invoiceDao, itemDao, invoiceItemDao);
+        service = new ServiceLayer(customerDao, invoiceDao, invoiceItemDao, itemDao);
 
     }
 
