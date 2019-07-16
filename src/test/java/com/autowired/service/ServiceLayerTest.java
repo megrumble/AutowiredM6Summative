@@ -1,26 +1,7 @@
 package com.autowired.service;
 
-import com.autowired.dao.*;
-import com.autowired.model.Customer;
-import com.autowired.model.Invoice;
-import com.autowired.model.InvoiceItem;
-import com.autowired.model.Item;
-import com.autowired.viewmodel.InvoiceViewModel;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
-
 public class ServiceLayerTest {
+<<<<<<< HEAD
 
     ServiceLayer service;
     CustomerDao customerDao;
@@ -188,4 +169,6 @@ public class ServiceLayerTest {
 
 
     }
+=======
+>>>>>>> f1d440a587bfcd09544b4fbfd3a9568f9a27b91b
 }

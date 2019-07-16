@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class InvoiceItemTest {
+public class InvoiceItemDaoTest {
 
     @Autowired
     CustomerDao customerDao;
@@ -74,7 +74,6 @@ public class InvoiceItemTest {
         item.setName("Yesterday");
         item.setDescription("dvd");
         item. setDailyRate(new BigDecimal("2.50"));
-
         item = itemDao.addItem(item);
 
         InvoiceItem invoiceItem = new InvoiceItem();
@@ -109,7 +108,7 @@ public class InvoiceItemTest {
         customer.setEmail("geo@gmail.com");
         customer.setCompany("Beatles");
 
-        customer = customerDao.addCustomer(customer);
+        customerDao.addCustomer(customer);
 
         Invoice invoice = new Invoice();
         invoice.setCustomerId(customer.getCustomerId());
@@ -117,13 +116,13 @@ public class InvoiceItemTest {
         invoice.setPickUpDate(LocalDate.of(2019, 6, 1));
         invoice.setReturnDate(LocalDate.of(2019, 8, 6));
         invoice.setLateFee(new BigDecimal("12.00"));
-        invoice = invoiceDao.addInvoice(invoice);
+        invoiceDao.addInvoice(invoice);
 
         Item item = new Item();
         item.setName("Yesterday");
         item.setDescription("dvd");
         item.setDailyRate(new BigDecimal("2.50"));
-        item = itemDao.addItem(item);
+        itemDao.addItem(item);
 
         InvoiceItem invoiceItem = new InvoiceItem();
         invoiceItem.setInvoiceId(invoice.getInvoiceId());
