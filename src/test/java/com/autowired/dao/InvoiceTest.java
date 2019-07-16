@@ -23,6 +23,10 @@ import static org.junit.Assert.assertNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class InvoiceTest {
+<<<<<<< HEAD
+
+
+=======
     @Autowired
     CustomerDao customerDao;
     @Autowired
@@ -211,4 +215,5 @@ public class InvoiceTest {
         assertEquals(invoice1, invoiceList.get(0));
 
     }
+>>>>>>> 7db706554d1dc950ae1b5afdca0cd98642577b9c
 }
