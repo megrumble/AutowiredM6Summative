@@ -39,6 +39,7 @@ public class ServiceLayerTest {
 
     @Test
     public void saveFindInvoice(){
+
         InvoiceViewModel ivm = new InvoiceViewModel();
 
         Customer customer = new Customer();
@@ -74,6 +75,7 @@ public class ServiceLayerTest {
         InvoiceViewModel fromService = service.findInvoice(ivm.getInvoice().getInvoiceId());
 
         assertEquals(fromService, invoice);
+
     }
 
     @Test
