@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class InvoiceItemTest {
+public class InvoiceItemDaoTest {
 
     @Autowired
     CustomerDao customerDao;

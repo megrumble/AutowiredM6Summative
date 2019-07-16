@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class CustomerTest {
+public class CustomerDaoTest {
 
     @Autowired
     CustomerDao customerDao;
