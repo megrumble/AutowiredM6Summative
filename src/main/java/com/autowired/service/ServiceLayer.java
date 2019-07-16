@@ -45,6 +45,7 @@ public class ServiceLayer {
         customer.setCompany("Company1");
         customer.setEmail("email@gmail.com");
         customer.setPhone("704-777-7777");
+
         customer = customerDao.addCustomer(customer);
 
         // Create invoice
@@ -102,6 +103,7 @@ public class ServiceLayer {
         return buildInvoiceViewModel(invoiceDao.getInvoice(id));
     }
 
+    // do we want to findAllInvoices or findInvoice
     public List<InvoiceViewModel> findAllInvoices(){
 
         List<InvoiceViewModel> invoiceViewModelList = null;
@@ -141,6 +143,32 @@ public class ServiceLayer {
         invoiceViewModel.getInvoiceItemList(invoiceItemList);
 
         return invoiceViewModel;
+    }
+
+    public void updateInvoice(InvoiceViewModel viewModel){
+
+        // Update the invoice information
+        Invoice invoice = viewModel.getInvoice();
+        Customer customer = viewModel.getCustomer();
+
+        invoice.setCustomerId(customer.getCustomerId());
+        invoice.setOrderDate(LocalDate.now());
+        invoice.setLateFee(BigDecimal.valueOf(3.09));
+        invoice.setOrderDate(LocalDate.now());
+        invoice.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
+        invoice.setReturnDate(LocalDate.now().plus(10,ChronoUnit.DAYS));
+
+        // invoiceDao.addInvoice(invoice);
+        Invoice savedInvoice = invoiceDao.getInvoice(invoice.getInvoiceId());
+
+        int invoiceId = savedInvoice.getInvoiceId();
+        /////
+        // List<InvoiceItem> invoiceItemList = viewModel.getInvoiceItemList();
+
+        // List<InvoiceItem> invoiceItemList = invoiceItemDao.getInvoiceItemsByInvoice(invoiceId);
+        // viewModel.setInvoiceItemList(invoiceItemList);
+
+        viewModel.setCustomer(customer);
 
     }
 
