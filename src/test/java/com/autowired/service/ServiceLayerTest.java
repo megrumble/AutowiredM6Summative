@@ -39,12 +39,12 @@ public class ServiceLayerTest {
 
     }
 
-    @Test
-    public void saveFindInvoice(){
-       InvoiceViewModel ivm = new InvoiceViewModel();
-
-       ivm
-    }
+//    @Test
+//    public void saveFindInvoice(){
+//       InvoiceViewModel ivm = new InvoiceViewModel();
+//
+//       ivm
+//    }
 
     @Test
     public void findAllInvoices(){

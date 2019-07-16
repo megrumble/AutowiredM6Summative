@@ -129,6 +129,6 @@ public class InvoiceViewModel {
 >>>>>>> 7db706554d1dc950ae1b5afdca0cd98642577b9c
     }
 
-    public void setInvoice(Invoice invoice) {
+    public void setInvoice(Invoice ) {
     }
 }
