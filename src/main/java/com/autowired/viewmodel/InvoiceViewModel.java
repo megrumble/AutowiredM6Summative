@@ -30,13 +30,14 @@ public class InvoiceViewModel {
         this.customer = customer;
     }
 
-    public List<InvoiceItem> getInvoiceItemList(List<InvoiceItem> invoiceItemList) {
-        return this.invoiceItemList;
-    }
+//    public List<InvoiceItem> getInvoiceItemList(List<InvoiceItem> invoiceItemList) {
+//        return this.invoiceItemList;
+//    }
 
-    public void setInvoiceItemList(List<InvoiceItem> invoiceItemList) {
-        this.invoiceItemList = invoiceItemList;
-    }
+//    public void setInvoiceItemList(List<InvoiceItem> invoiceItemList) {
+//        this.invoiceItemList = invoiceItemList;
+//    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -44,15 +45,11 @@ public class InvoiceViewModel {
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceViewModel that = (InvoiceViewModel) o;
         return getInvoice().equals(that.getInvoice()) &&
-                getCustomer().equals(that.getCustomer()) &&
-                getInvoiceItemList(invoiceItemList).equals(that.getInvoiceItemList(invoiceItemList));
+                getCustomer().equals(that.getCustomer());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getInvoice(), getCustomer(), getInvoiceItemList(invoiceItemList));
+        return Objects.hash(getInvoice(), getCustomer());
     }
-
-//    public void setInvoice(Invoice ) {
-//    }
 }
