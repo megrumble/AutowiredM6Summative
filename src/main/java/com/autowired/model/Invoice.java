@@ -1,6 +1,8 @@
 package com.autowired.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.Past;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -13,11 +15,10 @@ public class Invoice {
 //    pickupDate date not null,
 //    returnDate date not null,
 //    lateFee decimal(8.2) not null
-
     private int invoiceId;
     private int customerId;
 
-//  @Past(message = "Date must be in the past.")
+    // @Past(message = "Date must be in the past.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate orderDate;
 
