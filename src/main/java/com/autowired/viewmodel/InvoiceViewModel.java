@@ -104,4 +104,7 @@ public class InvoiceViewModel {
     public int hashCode() {
         return Objects.hash(getInvoiceId(), getCustomerId(), getCustomer(), getQuantity(), getItem(), getUnitRate(), getDiscount(), getInvoiceI());
     }
+
+    public void setInvoice(Invoice invoice) {
+    }
 }
