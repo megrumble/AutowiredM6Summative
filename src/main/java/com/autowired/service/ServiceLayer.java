@@ -28,7 +28,7 @@ public class ServiceLayer {
     private ItemDao itemDao;
 
     @Autowired
-    public ServiceLayer(InvoiceDao invoiceDao, CustomerDao customerDao, InvoiceItemDao invoiceItemDao, ItemDao itemDao) {
+    public ServiceLayer(CustomerDao customerDao, InvoiceDao invoiceDao, InvoiceItemDao invoiceItemDao, ItemDao itemDao) {
         this.invoiceDao = invoiceDao;
         this.customerDao = customerDao;
         this.invoiceItemDao = invoiceItemDao;
