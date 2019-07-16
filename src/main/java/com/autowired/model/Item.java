@@ -11,7 +11,6 @@ public class Item {
 //    name varchar(50) not null,
 //    description varchar(255),
 //    dailyRate decimal(8.2) not null
-    // same as track
     private int itemId;
 
     @NotEmpty(message = "You must supply a value for name.")

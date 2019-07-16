@@ -2,78 +2,56 @@ package com.autowired.viewmodel;
 
 import com.autowired.model.Customer;
 import com.autowired.model.Invoice;
-import com.autowired.model.InvoiceItem;
 import com.autowired.model.Item;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class InvoiceViewModel {
-<<<<<<< HEAD
-    private Customer customer;
-    private Invoice invoice;
-    private List<InvoiceItem> invoiceItemList = new ArrayList<>();
-=======
 
-    private int invoiceId;
+    private int invoiceItemId;
     private int customerId;
     private Customer customer;
     private int quantity;
-    private Item item;
+    private Invoice invoice;
     private BigDecimal unitRate;
     private BigDecimal discount;
-    private List<InvoiceItem> invoiceI = new ArrayList<>();
+    private List<Item> item = new ArrayList<>();
 
-    public int getInvoiceId() {
-        return invoiceId;
+    public int getInvoiceItemId() {
+        return invoiceItemId;
     }
 
-    public void setInvoiceId(int invoiceId) {
-        this.invoiceId = invoiceId;
+    public void setInvoiceItemId(int invoiceItemId) {
+        this.invoiceItemId = invoiceItemId;
     }
 
     public int getCustomerId() {
         return customerId;
     }
->>>>>>> 7db706554d1dc950ae1b5afdca0cd98642577b9c
 
-
-    public Customer getCustomer() {
-        return customer;
-<<<<<<< HEAD
-=======
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public int getQuantity() {
         return quantity;
->>>>>>> 7db706554d1dc950ae1b5afdca0cd98642577b9c
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public Item getItem() {
-        return item;
+    public Invoice getInvoice() {
+        return invoice;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 
-<<<<<<< HEAD
-    public List<InvoiceItem> getInvoiceItemList() {
-        return invoiceItemList;
-    }
-
-    public void setInvoiceItemList(List<InvoiceItem> invoiceItemList) {
-        this.invoiceItemList = invoiceItemList;
-=======
     public BigDecimal getUnitRate() {
         return unitRate;
     }
@@ -90,13 +68,12 @@ public class InvoiceViewModel {
         this.discount = discount;
     }
 
-    public List<InvoiceItem> getInvoiceI() {
-        return invoiceI;
+    public List<Item> getItem() {
+        return item;
     }
 
-    public void setInvoiceI(List<InvoiceItem> invoiceI) {
-        this.invoiceI = invoiceI;
->>>>>>> 7db706554d1dc950ae1b5afdca0cd98642577b9c
+    public void setItem(List<Item> item) {
+        this.item = item;
     }
 
     @Override
@@ -104,28 +81,17 @@ public class InvoiceViewModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceViewModel that = (InvoiceViewModel) o;
-<<<<<<< HEAD
-        return getCustomer().equals(that.getCustomer()) &&
-                getInvoice().equals(that.getInvoice()) &&
-                getInvoiceItemList().equals(that.getInvoiceItemList());
-=======
-        return getInvoiceId() == that.getInvoiceId() &&
+        return getInvoiceItemId() == that.getInvoiceItemId() &&
                 getCustomerId() == that.getCustomerId() &&
                 getQuantity() == that.getQuantity() &&
-                getCustomer().equals(that.getCustomer()) &&
-                getItem().equals(that.getItem()) &&
+                getInvoice().equals(that.getInvoice()) &&
                 getUnitRate().equals(that.getUnitRate()) &&
                 getDiscount().equals(that.getDiscount()) &&
-                getInvoiceI().equals(that.getInvoiceI());
->>>>>>> 7db706554d1dc950ae1b5afdca0cd98642577b9c
+                getItem().equals(that.getItem());
     }
 
     @Override
     public int hashCode() {
-<<<<<<< HEAD
-        return Objects.hash(getCustomer(), getInvoice(), getInvoiceItemList());
-=======
-        return Objects.hash(getInvoiceId(), getCustomerId(), getCustomer(), getQuantity(), getItem(), getUnitRate(), getDiscount(), getInvoiceI());
->>>>>>> 7db706554d1dc950ae1b5afdca0cd98642577b9c
+        return Objects.hash(getInvoiceItemId(), getCustomerId(), getQuantity(), getInvoice(), getUnitRate(), getDiscount(), getItem());
     }
 }
