@@ -52,6 +52,6 @@ public class InvoiceViewModel {
         return Objects.hash(getInvoice(), getCustomer(), getInvoiceItemList(invoiceItemList));
     }
 
-    public void setInvoice(Invoice ) {
-    }
+//    public void setInvoice(Invoice ) {
+//    }
 }
