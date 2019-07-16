@@ -1,12 +1,29 @@
 package com.autowired.service;
 
+import com.autowired.dao.*;
+import com.autowired.model.Customer;
+import com.autowired.model.Invoice;
+import com.autowired.model.InvoiceItem;
+import com.autowired.model.Item;
+import com.autowired.viewmodel.InvoiceViewModel;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doReturn;
+
 public class ServiceLayerTest {
-<<<<<<< HEAD
 
     ServiceLayer service;
     CustomerDao customerDao;
     InvoiceDao invoiceDao;
-    ItemDao itemDao;
+    CustomerDao itemDao;
     InvoiceItemDao invoiceItemDao;
 
     @Before
@@ -98,6 +115,9 @@ public class ServiceLayerTest {
 
     }
 
+    private CustomerDao mock(Class<CustomerDaoJdbcTemplateImpl> customerDaoJdbcTemplateClass) {
+    }
+
     private void setUpItemDaoMock(){
         itemDao = mock(ItemDaoJdbcTemplateImpl.class);
         Item item = new Item();
@@ -146,7 +166,7 @@ public class ServiceLayerTest {
     }
 
     public void setUpInvoiceItemDaoMock(){
-        invoiceItemDao = mock(InvoiceItemDaoJdbcTemplateImpl.class);
+        invoiceItemDao = (InvoiceItemDao) mock(InvoiceItemDaoJdbcTemplateImpl.class);
         InvoiceItem invoiceItem = new InvoiceItem();
         invoiceItem.setInvoiceId(1);
         invoiceItem.setItemId(1);
@@ -169,6 +189,5 @@ public class ServiceLayerTest {
 
 
     }
-=======
->>>>>>> f1d440a587bfcd09544b4fbfd3a9568f9a27b91b
+
 }
