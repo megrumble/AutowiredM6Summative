@@ -26,6 +26,13 @@ public interface InvoiceItemDao {
     List<InvoiceItem> getAllInvoiceItems();
 
     /**
+     * Retrieves a list of InvoiceItems by invoice id in the database
+     * @param invoiceId
+     * @return List<InvoiceItem>
+     */
+    List<InvoiceItem> getInvoiceItemsByInvoice(int invoiceId);
+
+    /**
      * Updates an InvoiceItem from the InvoiceItem object sent from the RestController
      * @param invoiceItem - The InvoiceItem object sent from the RestController
      */

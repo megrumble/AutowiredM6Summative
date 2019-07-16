@@ -35,6 +35,8 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
             "select * from invoice_item where invoice_item_id = ?";
     private static final String SELECT_ALL_INVOICE_ITEMS_SQL =
             "select * from invoice_item";
+    private static final String SELECT_INVOICE_ITEMS_BY_INVOICE_SQL =
+            "select * from invoice_item where invoice_id = ?";
     private static final String UPDATE_INVOICE_ITEM_SQL =
             "update invoice_item set invoice_id = ?, item_id = ?, quantity = ?, unit_rate = ?, discount = ? where invoice_item_id = ?";
     private static final String DELETE_INVOICE_ITEM_SQL =
@@ -50,7 +52,6 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
         this.invoiceDao = invoiceDao;
         this.itemDao = itemDao;
     }
-
 
     /**
      * Add a InvoiceItem object to the database.
@@ -75,7 +76,8 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
 
     /**
      * Retrieves a InvoiceItem object from the database using a given InvoiceItem id
-     * @param invoiceItemId@return InvoiceItem - The InvoiceItem object is returned to the RestController
+     * @param invoiceItemId
+     * @return InvoiceItem - The InvoiceItem object is returned to the RestController
      */
     @Override
     public InvoiceItem getInvoiceItem(int invoiceItemId) {
@@ -95,6 +97,17 @@ public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao {
     public List<InvoiceItem> getAllInvoiceItems() {
         return jdbcTemplate.query(SELECT_ALL_INVOICE_ITEMS_SQL, this::mapRowToInvoiceItem);
     }
+
+    /**
+     * Retrieves a list of InvoiceItems by invoice id in the database
+     * @param invoiceId
+     * @return List<InvoiceItem>
+     */
+    @Override
+    public List<InvoiceItem> getInvoiceItemsByInvoice(int invoiceId) {
+        return jdbcTemplate.query(SELECT_INVOICE_ITEMS_BY_INVOICE_SQL, this::mapRowToInvoiceItem);
+    }
+
 
     /**
      * Updates an InvoiceItem from the InvoiceItem object sent from the RestController
