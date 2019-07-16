@@ -38,7 +38,11 @@ public class ServiceLayerTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void saveFindInvoice(){
+=======
+    public void saveFindInvoice() {
+>>>>>>> c697253b25584ca1072efdbf2149b18c5fcb8b72
 
         InvoiceViewModel ivm = new InvoiceViewModel();
 
@@ -56,7 +60,11 @@ public class ServiceLayerTest {
         invoice.setLateFee(BigDecimal.valueOf(3.09));
         invoice.setOrderDate(LocalDate.now());
         invoice.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
+<<<<<<< HEAD
         invoice.setReturnDate(LocalDate.now().plus(10,ChronoUnit.DAYS));
+=======
+        invoice.setReturnDate(LocalDate.now().plus(10, ChronoUnit.DAYS));
+>>>>>>> c697253b25584ca1072efdbf2149b18c5fcb8b72
 
         ivm.setInvoice(invoice);
         InvoiceItem invoiceItem = new InvoiceItem();
@@ -66,6 +74,7 @@ public class ServiceLayerTest {
         invoiceItem.setDiscount(new BigDecimal(".50"));
         List<InvoiceItem> invoiceItemList = new ArrayList<>();
         invoiceItemList.add(invoiceItem);
+<<<<<<< HEAD
 
 
 
@@ -118,6 +127,16 @@ public class ServiceLayerTest {
 
 
 
+=======
+
+
+        service.saveInvoice(ivm);
+
+        InvoiceViewModel fromService = service.findInvoice(ivm.getInvoice().getInvoiceId());
+
+        assertEquals(fromService, invoice);
+    }
+>>>>>>> c697253b25584ca1072efdbf2149b18c5fcb8b72
 
     @Test
     public void findAllInvoices(){
