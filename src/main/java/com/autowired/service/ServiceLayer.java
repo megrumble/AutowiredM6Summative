@@ -167,8 +167,14 @@ public class ServiceLayer {
 
         // List<InvoiceItem> invoiceItemList = invoiceItemDao.getInvoiceItemsByInvoice(invoiceId);
         // viewModel.setInvoiceItemList(invoiceItemList);
+        customer.setFirstName("George");
+        customer.setLastName("Harrison");
+        customer.setPhone("1234567890");
+        customer.setEmail("geo@gmail.com");
+        customer.setCompany("Beatles");
 
-        viewModel.setCustomer(customer);
+        customer = customerDao.addCustomer(customer);
+
 
     }
 
