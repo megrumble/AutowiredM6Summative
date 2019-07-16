@@ -73,7 +73,7 @@ public class ServiceLayerTest {
         List<InvoiceItem> invoiceItemList = new ArrayList<>();
         invoiceItemList.add(invoiceItem);
 
-        ivm.setInvoiceI(invoiceItemList);
+        ivm.setInvoiceItemList(invoiceItemList);
 
         ivm = service.saveInvoice(ivm);
 
