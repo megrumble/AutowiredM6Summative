@@ -37,12 +37,44 @@ public class ServiceLayerTest {
 
     }
 
-//    @Test
-//    public void saveFindInvoice(){
-//       InvoiceViewModel ivm = new InvoiceViewModel();
-//
-//       ivm
-//    }
+    @Test
+    public void saveFindInvoice(){
+        InvoiceViewModel ivm = new InvoiceViewModel();
+
+        Customer customer = new Customer();
+        customer.setFirstName("Ringo");
+        customer.setLastName("Starr");
+        customer.setCompany("Beatles");
+        customer.setEmail("Ringo@gmail.com");
+        customer.setPhone("7045748392");
+
+        ivm.setCustomer(customer);
+
+        Invoice invoice = new Invoice();
+        invoice.setCustomerId(1);
+        invoice.setLateFee(BigDecimal.valueOf(3.09));
+        invoice.setOrderDate(LocalDate.now());
+        invoice.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
+        invoice.setReturnDate(LocalDate.now().plus(10,ChronoUnit.DAYS));
+
+        ivm.setInvoice(invoice);
+        InvoiceItem invoiceItem = new InvoiceItem();
+        invoiceItem.setItemId(1);
+        invoiceItem.setQuantity(2);
+        invoiceItem.setUnitRate(new BigDecimal("2.50"));
+        invoiceItem.setDiscount(new BigDecimal(".50"));
+        List<InvoiceItem> invoiceItemList = new ArrayList<>();
+        invoiceItemList.add(invoiceItem);
+
+
+
+
+        service.saveInvoice(ivm);
+
+        InvoiceViewModel fromService = service.findInvoice(ivm.getInvoice().getInvoiceId());
+
+        assertEquals(fromService, invoice);
+    }
 
     @Test
     public void findAllInvoices(){
@@ -81,8 +113,31 @@ public class ServiceLayerTest {
 
         assertEquals(fromService.size(), 1);
 
+    }
 
+    @Test
+    public void removeInvoice(){
+        InvoiceViewModel ivm = new InvoiceViewModel();
 
+        Customer customer = new Customer();
+        customer.setFirstName("Ringo");
+        customer.setLastName("Starr");
+        customer.setCompany("Beatles");
+        customer.setEmail("Ringo@gmail.com");
+        customer.setPhone("7045748392");
+
+        ivm.setCustomer(customer);
+
+        Invoice invoice = new Invoice();
+        invoice.setCustomerId(1);
+        invoice.setLateFee(BigDecimal.valueOf(3.09));
+        invoice.setOrderDate(LocalDate.now());
+        invoice.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
+        invoice.setReturnDate(LocalDate.now().plus(10,ChronoUnit.DAYS));
+
+        ivm.setInvoice(invoice);
+
+       Invoice invoice1 = service.findInvoice(ivm.getInvoice().getInvoiceId());
 
 
     }
