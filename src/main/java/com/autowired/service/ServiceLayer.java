@@ -17,6 +17,7 @@ import sun.jvm.hotspot.utilities.Assert;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -80,25 +81,30 @@ public class ServiceLayer {
 
         // Create customer
         Customer customer = new Customer();
-        customer.setFirstName("fName");
-        customer.setLastName("lName");
-        customer.setCompany("Company1");
-        customer.setEmail("email@gmail.com");
-        customer.setPhone("704-777-7777");
+        // get user input from the view
+        customer.setFirstName(viewModel.getCustomer().getFirstName());
+        customer.setLastName(viewModel.getCustomer().getLastName());
+        customer.setCompany(viewModel.getCustomer().getCompany());
+        customer.setEmail(viewModel.getCustomer().getEmail());
+        customer.setPhone(viewModel.getCustomer().getPhone());
 
         customer = customerDao.addCustomer(customer);
 
         // Create invoice
         Invoice invoice = new Invoice();
-        invoice.setOrderDate(LocalDate.now());
-        invoice.setReturnDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
-        invoice.setPickUpDate(LocalDate.now());
         invoice.setCustomerId(customer.getCustomerId());
-        invoice.setLateFee(BigDecimal.valueOf(95.99));
+        invoice.setOrderDate(viewModel.getInvoice().getOrderDate());;
+        invoice.setReturnDate(viewModel.getInvoice().getReturnDate());
+        invoice.setPickUpDate(viewModel.getInvoice().getPickUpDate());
+        invoice.setLateFee(viewModel.getInvoice().getLateFee());
+
+        invoice.setInvoiceItemList(viewModel.getInvoice().getInvoiceItemList());
+
         invoice = invoiceDao.addInvoice(invoice);
 
         // Create two items
-        Item item1 = new Item();
+        /*Item item1 = new Item();
+        item1.setName(viewModel.getInvoiceItemList());
         item1.setName("itemName 1");
         item1.setDescription("itemDescription 1");
         item1.setDailyRate(BigDecimal.valueOf(5.99));
@@ -112,6 +118,8 @@ public class ServiceLayer {
 
         // Create two invoice items
         InvoiceItem invoiceItem1 = new InvoiceItem();
+        // List<InvoiceItem> invoiceItemList = new ArrayList<>(viewModel.getInvoiceItemList());
+
         invoiceItem1.setInvoiceId(invoice.getInvoiceId());
         invoiceItem1.setItemId(item1.getItemId());
         invoiceItem1.setDiscount(BigDecimal.valueOf(1.99));
@@ -129,6 +137,8 @@ public class ServiceLayer {
 
         // populate list of items
         List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItems();
+
+*/
 
         // Populate invoice view model
         InvoiceViewModel invoiceViewModel = new InvoiceViewModel();

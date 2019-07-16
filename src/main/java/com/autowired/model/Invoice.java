@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.Past;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 public class Invoice {
@@ -31,6 +32,9 @@ public class Invoice {
     private LocalDate returnDate;
 
     private BigDecimal lateFee;
+
+    // Invoice items are a composition of the invoice - Sam
+    private List<InvoiceItem> invoiceItemList;
 
     public int getInvoiceId() {
         return invoiceId;
@@ -80,6 +84,14 @@ public class Invoice {
         this.lateFee = lateFee;
     }
 
+    public List<InvoiceItem> getInvoiceItemList() {
+        return invoiceItemList;
+    }
+
+    public void setInvoiceItemList(List<InvoiceItem> invoiceItemList) {
+        this.invoiceItemList = invoiceItemList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -90,11 +102,12 @@ public class Invoice {
                 getOrderDate().equals(invoice.getOrderDate()) &&
                 getPickUpDate().equals(invoice.getPickUpDate()) &&
                 getReturnDate().equals(invoice.getReturnDate()) &&
-                getLateFee().equals(invoice.getLateFee());
+                getLateFee().equals(invoice.getLateFee()) &&
+                getInvoiceItemList().equals(invoice.getInvoiceItemList());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getInvoiceId(), getCustomerId(), getOrderDate(), getPickUpDate(), getReturnDate(), getLateFee());
+        return Objects.hash(getInvoiceId(), getCustomerId(), getOrderDate(), getPickUpDate(), getReturnDate(), getLateFee(), getInvoiceItemList());
     }
 }

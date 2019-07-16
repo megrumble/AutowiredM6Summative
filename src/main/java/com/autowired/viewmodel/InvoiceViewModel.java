@@ -11,7 +11,8 @@ public class InvoiceViewModel {
 
     private Invoice invoice;
     private Customer customer;
-    private List<InvoiceItem> invoiceItemList;
+
+    //private List<InvoiceItem> invoiceItemList;
 
     public Invoice getInvoice() {
         return invoice;
