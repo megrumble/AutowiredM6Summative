@@ -93,7 +93,12 @@ public class ServiceLayerTest {
 
             ivm.setCustomer(customer);
 
-
+            Invoice invoice = new Invoice();
+            invoice.setCustomerId(1);
+            invoice.setLateFee(BigDecimal.valueOf(3.09));
+            invoice.setOrderDate(LocalDate.now());
+            invoice.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
+            invoice.setReturnDate(LocalDate.now().plus(10, ChronoUnit.DAYS));
 
             ivm.setInvoice(invoice);
             InvoiceItem invoiceItem = new InvoiceItem();
