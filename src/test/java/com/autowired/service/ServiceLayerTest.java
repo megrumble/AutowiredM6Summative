@@ -17,6 +17,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 
 public class ServiceLayerTest {
 
@@ -38,16 +39,8 @@ public class ServiceLayerTest {
     }
 
     @Test
-<<<<<<< HEAD
-<<<<<<< HEAD
     public void saveFindInvoice(){
-=======
-    public void saveFindInvoice() {
->>>>>>> c697253b25584ca1072efdbf2149b18c5fcb8b72
-=======
 
-    public void saveFindInvoice(){
->>>>>>> bb5ea6d295d75aa139bf83fda0c7fec7c1fecb45
 
         InvoiceViewModel ivm = new InvoiceViewModel();
 
@@ -65,19 +58,10 @@ public class ServiceLayerTest {
         invoice.setLateFee(BigDecimal.valueOf(3.09));
         invoice.setOrderDate(LocalDate.now());
         invoice.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
-<<<<<<< HEAD
-<<<<<<< HEAD
-        invoice.setReturnDate(LocalDate.now().plus(10,ChronoUnit.DAYS));
-=======
         invoice.setReturnDate(LocalDate.now().plus(10, ChronoUnit.DAYS));
->>>>>>> c697253b25584ca1072efdbf2149b18c5fcb8b72
-=======
-
-        invoice.setReturnDate(LocalDate.now().plus(10, ChronoUnit.DAYS));
-
->>>>>>> bb5ea6d295d75aa139bf83fda0c7fec7c1fecb45
 
         ivm.setInvoice(invoice);
+
         InvoiceItem invoiceItem = new InvoiceItem();
         invoiceItem.setItemId(1);
         invoiceItem.setQuantity(2);
@@ -85,8 +69,6 @@ public class ServiceLayerTest {
         invoiceItem.setDiscount(new BigDecimal(".50"));
         List<InvoiceItem> invoiceItemList = new ArrayList<>();
         invoiceItemList.add(invoiceItem);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 
 
@@ -137,29 +119,8 @@ public class ServiceLayerTest {
 
 
 
-
-
-=======
-
-
-=======
->>>>>>> bb5ea6d295d75aa139bf83fda0c7fec7c1fecb45
-        service.saveInvoice(ivm);
-
-        InvoiceViewModel fromService = service.findInvoice(ivm.getInvoice().getInvoiceId());
-
-        assertEquals(fromService, invoice);
-<<<<<<< HEAD
-    }
->>>>>>> c697253b25584ca1072efdbf2149b18c5fcb8b72
-
-    @Test
-    public void findAllInvoices(){
-=======
-        
-      @Test
       public void findAllInvoices(){
->>>>>>> bb5ea6d295d75aa139bf83fda0c7fec7c1fecb45
+
         InvoiceViewModel ivm = new InvoiceViewModel();
 
         Customer customer = new Customer();
@@ -219,13 +180,10 @@ public class ServiceLayerTest {
 
         ivm.setInvoice(invoice);
 
-       Invoice invoice1 = service.findInvoice(ivm.getInvoice().getInvoiceId());
+       Invoice invoice1 = service.removeInvoice(ivm.getInvoice().getInvoiceId());
 
 
     }
-
-    @
-
 
 
     private void setUpCustomerDaoMock() {
@@ -254,8 +212,7 @@ public class ServiceLayerTest {
 
     }
 
-    private CustomerDao mock(Class<CustomerDaoJdbcTemplateImpl> customerDaoJdbcTemplateClass) {
-    }
+
 
     private void setUpItemDaoMock(){
         itemDao = mock(ItemDaoJdbcTemplateImpl.class);

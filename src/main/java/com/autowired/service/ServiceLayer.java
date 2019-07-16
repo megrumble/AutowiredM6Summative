@@ -12,6 +12,7 @@ import com.autowired.viewmodel.InvoiceViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import sun.jvm.hotspot.utilities.Assert;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -119,6 +120,41 @@ public class ServiceLayer {
         }
 
         return invoiceViewModelList;
+    }
+
+    @Transactional
+    public void removeInvoice(int invoiceId){
+//        Customer customer = new Customer();
+//        customer.setFirstName("fName");
+//        customer.setLastName("lName");
+//        customer.setCompany("Company1");
+//        customer.setEmail("email@gmail.com");
+//        customer.setPhone("704-777-7777");
+//
+//        customer = customerDao.addCustomer(customer);
+//
+//        // Create invoice
+//        Invoice invoice = new Invoice();
+//        invoice.setOrderDate(LocalDate.now());
+//        invoice.setReturnDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
+//        invoice.setPickUpDate(LocalDate.now());
+//        invoice.setCustomerId(customer.getCustomerId());
+//        invoice.setLateFee(BigDecimal.valueOf(95.99));
+//        invoice = invoiceDao.addInvoice(invoice);
+//
+//        invoiceDao.deleteInvoice(invoice.getInvoiceId());
+//
+//        Invoice invoice1 = invoiceDao.getInvoice(invoice.getInvoiceId());
+//
+//        assertNull(invoice1);
+        List<InvoiceItem>
+
+        Invoice invoice1 = invoiceDao.getInvoice(invoiceId);
+
+
+
+
+
     }
 
     // Helper methods
