@@ -40,7 +40,7 @@ public class ServiceLayerTest {
 
     @Test
 
-    public void saveFindInvoice() {
+    public void saveFindInvoice(){
 
         InvoiceViewModel ivm = new InvoiceViewModel();
 
@@ -58,11 +58,10 @@ public class ServiceLayerTest {
         invoice.setLateFee(BigDecimal.valueOf(3.09));
         invoice.setOrderDate(LocalDate.now());
         invoice.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
-
         invoice.setReturnDate(LocalDate.now().plus(10, ChronoUnit.DAYS));
 
-
         ivm.setInvoice(invoice);
+
         InvoiceItem invoiceItem = new InvoiceItem();
         invoiceItem.setItemId(1);
         invoiceItem.setQuantity(2);
@@ -70,6 +69,10 @@ public class ServiceLayerTest {
         invoiceItem.setDiscount(new BigDecimal(".50"));
         List<InvoiceItem> invoiceItemList = new ArrayList<>();
         invoiceItemList.add(invoiceItem);
+
+
+
+
         service.saveInvoice(ivm);
 
         InvoiceViewModel fromService = service.findInvoice(ivm.getInvoice().getInvoiceId());
@@ -90,12 +93,7 @@ public class ServiceLayerTest {
 
             ivm.setCustomer(customer);
 
-            Invoice invoice = new Invoice();
-            invoice.setCustomerId(1);
-            invoice.setLateFee(BigDecimal.valueOf(3.09));
-            invoice.setOrderDate(LocalDate.now());
-            invoice.setPickUpDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
-            invoice.setReturnDate(LocalDate.now().plus(10, ChronoUnit.DAYS));
+
 
             ivm.setInvoice(invoice);
             InvoiceItem invoiceItem = new InvoiceItem();
@@ -108,11 +106,13 @@ public class ServiceLayerTest {
 
             ivm.setInvoiceItemList(invoiceItemList);
 
+
             ivm = service.saveInvoice(ivm);
 
             List<InvoiceViewModel> fromService = service.findAllInvoices();
 
             assertEquals(fromService.size(), 1);
+
 
         }
         @Test
@@ -133,7 +133,9 @@ public class ServiceLayerTest {
             assertEquals(1, customerList.get(0));
 
 
+
         }
+
 
     @Test
     public void saveFindFindAllItem(){

@@ -12,6 +12,7 @@ import com.autowired.viewmodel.InvoiceViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import sun.jvm.hotspot.utilities.Assert;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -35,6 +36,45 @@ public class ServiceLayer {
         this.itemDao = itemDao;
     }
 
+    public Customer saveCustomer(Customer customer){
+        return customerDao.addCustomer(customer);
+    }
+
+    public Customer findCustomer(int customerId){
+        return customerDao.getCustomer(customerId);
+    }
+
+    public List<Customer> findAllCustomers(){
+        return customerDao.getAllCustomers();
+    }
+
+    public void updateCustomer(Customer customer){
+        customerDao.updateCustomer(customer);
+    }
+
+    public void removeCustomer(int customerId){
+        customerDao.deleteCustomer(customerId);
+    }
+
+    public Item saveItem(Item item){
+        return itemDao.addItem(item);
+    }
+
+    public Item findItem(int itemId){
+        return itemDao.getItem(itemId);
+    }
+
+    public List<Item> findAllItems(){
+        return itemDao.getAllItems();
+    }
+
+    public void updateItem(Item item){
+        itemDao.updateItem(item);
+    }
+
+    public void removeItem(int itemId){
+        itemDao.deleteItem(itemId);
+    }
     @Transactional
     public InvoiceViewModel saveInvoice(InvoiceViewModel viewModel) {
 
@@ -119,6 +159,17 @@ public class ServiceLayer {
         }
 
         return invoiceViewModelList;
+    }
+
+    @Transactional
+    public void removeInvoice(int invoiceId){
+//
+        List<InvoiceItem> invoiceItemList = invoiceItemDao.getInvoiceItemsByInvoice(invoiceId);
+        invoiceItemList.stream().forEach(invoiceItem -> invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId()));
+
+
+        invoiceDao.deleteInvoice(invoiceId);
+
     }
 
     // Helper methods
