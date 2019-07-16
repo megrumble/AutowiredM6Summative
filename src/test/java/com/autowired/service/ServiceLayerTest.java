@@ -180,7 +180,7 @@ public class ServiceLayerTest {
 
         ivm.setInvoice(invoice);
 
-       Invoice invoice1 = service.removeInvoice(ivm.getInvoice().getInvoiceId());
+       service.removeInvoice(ivm.getInvoice().getInvoiceId());
 
 
     }

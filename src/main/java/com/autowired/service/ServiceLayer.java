@@ -36,6 +36,45 @@ public class ServiceLayer {
         this.itemDao = itemDao;
     }
 
+    public Customer saveCustomer(Customer customer){
+        return customerDao.addCustomer(customer);
+    }
+
+    public Customer findCustomer(int customerId){
+        return customerDao.getCustomer(customerId);
+    }
+
+    public List<Customer> findAllCustomers(){
+        return customerDao.getAllCustomers();
+    }
+
+    public void updateCustomer(Customer customer){
+        customerDao.updateCustomer(customer);
+    }
+
+    public void removeCustomer(int customerId){
+        customerDao.deleteCustomer(customerId);
+    }
+
+    public Item saveItem(Item item){
+        return itemDao.addItem(item);
+    }
+
+    public Item findItem(int itemId){
+        return itemDao.getItem(itemId);
+    }
+
+    public List<Item> findAllItems(){
+        return itemDao.getAllItems();
+    }
+
+    public void updateItem(Item item){
+        itemDao.updateItem(item);
+    }
+
+    public void removeItem(int itemId){
+        itemDao.deleteItem(itemId);
+    }
     @Transactional
     public InvoiceViewModel saveInvoice(InvoiceViewModel viewModel) {
 
@@ -124,36 +163,12 @@ public class ServiceLayer {
 
     @Transactional
     public void removeInvoice(int invoiceId){
-//        Customer customer = new Customer();
-//        customer.setFirstName("fName");
-//        customer.setLastName("lName");
-//        customer.setCompany("Company1");
-//        customer.setEmail("email@gmail.com");
-//        customer.setPhone("704-777-7777");
 //
-//        customer = customerDao.addCustomer(customer);
-//
-//        // Create invoice
-//        Invoice invoice = new Invoice();
-//        invoice.setOrderDate(LocalDate.now());
-//        invoice.setReturnDate(LocalDate.now().plus(5, ChronoUnit.DAYS));
-//        invoice.setPickUpDate(LocalDate.now());
-//        invoice.setCustomerId(customer.getCustomerId());
-//        invoice.setLateFee(BigDecimal.valueOf(95.99));
-//        invoice = invoiceDao.addInvoice(invoice);
-//
-//        invoiceDao.deleteInvoice(invoice.getInvoiceId());
-//
-//        Invoice invoice1 = invoiceDao.getInvoice(invoice.getInvoiceId());
-//
-//        assertNull(invoice1);
-        List<InvoiceItem>
-
-        Invoice invoice1 = invoiceDao.getInvoice(invoiceId);
+        List<InvoiceItem> invoiceItemList = invoiceItemDao.getInvoiceItemsByInvoice(invoiceId);
+        invoiceItemList.stream().forEach(invoiceItem -> invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId()));
 
 
-
-
+        invoiceDao.deleteInvoice(invoiceId);
 
     }
 
